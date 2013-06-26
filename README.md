@@ -38,13 +38,15 @@ And put in the `Social` facade under the `aliases` array in `app/config/app.php`
      'Social' => 'Codesleeve\Social\Social',
 ```
 
-## Usage
-
-First you will need to configure the plugin. I will walk through how to do it for facebook. You can see a complete list of other social sites below.
+Lastly generate a package config that you can work with.
 
 ```php
   php artisan config:publish codesleeve/social
 ```
+
+## Usage
+
+First you will need to configure the plugin. Let's walk through how to do it for facebook. You can see a complete list of other social sites below.
 
 Next go edit the file at `app/config/packages/codesleeve/social/config.php`, here is a example for facebook,
 
