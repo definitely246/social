@@ -1,0 +1,25 @@
+{
+    "name": "codesleeve/social",
+    "description": "A simple way to integrate social sites like facebook, twitter and google into your Laravel 4 application.",
+    "authors": [
+        {
+            "name": "Kelt",
+            "email": "kelt@dockins.org"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x",
+        "lusitanian/oauth": "1.0.*@dev"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations",
+            "src/controllers"            
+        ],
+        "psr-0": {
+            "Codesleeve\\Social": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
