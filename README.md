@@ -31,7 +31,7 @@ Once this operation completes add the service provider. Open `app/config/app.php
     'Codesleeve\Social\SocialServiceProvider'
 ```
 
-And put in the `Social` facade under the `aliases` array in `app/config/app.php`. This is helpful if you want to use `Asset::htmls`, `Asset::javascripts`, or `Asset::stylesheets`
+And put in the `Social` facade under the `aliases` array in `app/config/app.php`.
 
 ```php
 
