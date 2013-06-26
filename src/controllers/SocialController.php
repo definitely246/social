@@ -20,7 +20,7 @@ class SocialController extends Controller {
 		$service = App::make('social')->facebook();
 
 		if (Input::get('code', null)) {
-			$service->requestAccessToken( Input::get('oauth_token') );
+			$service->requestAccessToken( Input::get('code') );
 		}
 
 		return Redirect::to(Config::get('social::facebook.redirect_url'));
