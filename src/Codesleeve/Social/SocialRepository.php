@@ -20,41 +20,13 @@ class SocialRepository extends ServiceFactory {
 	}
 
 	/**
-	 * [service description]
-	 * @param  [type] $name [description]
-	 * @return [type]       [description]
-	 */
-	public function getService($name, $url)
-	{
-		$key = $this->config->get("social::$name.key");
-		$secret = $this->config->get("social::$name.secret");
-		$scopes = $this->config->get("social::$name.scopes");
-
-		$credentials = new Credentials($key, $secret, $url);
-		$storage = new Session;
-
-		$factory = new ServiceFactory;
-		return $factory->createService($name, $credentials, $storage, $scopes);
-	}
-
-	/**
-	 * [requestUrl description]
-	 * @param  [type] $serviceName [description]
-	 * @return [type]              [description]
-	 */
-	public function requestUrl($serviceName)
-	{
-		$url = $this->config->get('social::routing.prefix') . "/$serviceName/connect";
-		return $this->url->to($url);
-	}
-
-	/**
 	 * [login description]
 	 * @param  [type] $serviceName [description]
 	 * @return [type]              [description]
 	 */
 	public function login($serviceName)
 	{
+		$serviceName = strtolower($serviceName);
 		return $this->getService($serviceName, $this->requestUrl($serviceName))->getAuthorizationUri();
 	}
 
@@ -118,7 +90,34 @@ class SocialRepository extends ServiceFactory {
 		return json_decode($service->request($request), true);
 	}
 
+	/**
+	 * [service description]
+	 * @param  [type] $name [description]
+	 * @return [type]       [description]
+	 */
+	protected function getService($name, $url)
+	{
+		$key = $this->config->get("social::$name.key");
+		$secret = $this->config->get("social::$name.secret");
+		$scopes = $this->config->get("social::$name.scopes");
 
+		$credentials = new Credentials($key, $secret, $url);
+		$storage = new Session;
+
+		$factory = new ServiceFactory;
+		return $factory->createService($name, $credentials, $storage, $scopes);
+	}
+
+	/**
+	 * [requestUrl description]
+	 * @param  [type] $serviceName [description]
+	 * @return [type]              [description]
+	 */
+	protected function requestUrl($serviceName)
+	{
+		$url = $this->config->get('social::routing.prefix') . "/$serviceName/connect";
+		return $this->url->to($url);
+	}
 
 }
 
