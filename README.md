@@ -1,0 +1,95 @@
+## What the heck is this Social package?
+
+*_A video is coming soon._*
+
+This package's goal is to quickly integrate oauth and social media sites like facebook, twitter and google into your laravel 4 application.
+
+## Installation
+
+Begin by installing this package through Composer. Edit your project's `composer.json` file to require `codesleeve/social`.
+
+It might look something like:
+
+```php
+  "require": {
+    "laravel/framework": "4.0.*",
+  	"codesleeve/social": "dev-master"
+  }
+```
+
+Next, update Composer from the Terminal:
+
+```php
+    composer update
+```
+
+Once this operation completes add the service provider. Open `app/config/app.php`, and add a new item to the providers array.
+
+```php
+    'Codesleeve\Social\SocialServiceProvider'
+```
+
+And put in the `Social` facade under the `aliases` array in `app/config/app.php`. This is helpful if you want to use `Asset::htmls`, `Asset::javascripts`, or `Asset::stylesheets`
+
+```php
+
+     'Social' => 'Codesleeve\Social\Social',
+```
+
+## Usage
+
+First you will need to configure the plugin. I will walk through how to do it for facebook. You can see a complete list of other social sites below.
+
+```php
+  php artisan config:publish codesleeve/social
+```
+
+Next go edit the file at `app/config/packages/codesleeve/social/config.php`, here is a example for facebook,
+
+```php
+  'facebook' => array(
+  	'key' => '',
+  	'secret' => '',
+  	'scopes' => array('email'),
+  	'redirect_url' => '/',
+  ),
+```
+
+You will need to add at least a `key` and `secret` which can be obtained by [creating a new facebok app][dev_facebook]
+
+After the user logs in, if you want to redirect them somewhere besides the base path of your laravel application, then you can change the `redirect_url`.
+
+Once you have configured facebook application open up a view and place
+
+    <a href="<?= Social::login('facebook') ?>">Login to facebook</a>
+
+Now that you've connected with facebook, now you can access Facebook data about that user (provided you have requested that [permission in your scopes array inside the package config](https://developers.facebook.com/docs/reference/login/#permissions)) 
+
+You can pass api requests as a parameter to the `Social::facebook` facade, like so:
+
+```php
+  $user = Social::facebook('/me');
+```
+
+Another thing we've added is a common interface to get the logged in user by passing 'user' as the request.
+
+```php
+  $user = Social::facebook('user');
+  $user = Social::twitter('user');
+  $user = Social::google('user');
+```
+
+This keeps us from having to deal directly with the api when we just simply want a user's info and nothing more.
+  
+## Support
+
+Here is a list of social sites we support currently. More will be added later... I think... maybe... yeah, well... I donno... yeah, I think so.
+
+  - Facebook
+  - Twitter
+  - Google
+
+Please file an issue if you see a problem. And enjoy!
+
+
+[dev_facebook]: https://developers.facebook.com/apps  "Create an app on facebook developers site"
