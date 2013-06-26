@@ -4,6 +4,8 @@
 
 This package's goal is to quickly integrate oauth and social media sites like facebook, twitter and google into your laravel 4 application.
 
+We do this with a preconfigured setup of oauth plugins that piggybacks off of the very popular lusitanian/phpoauthlib. The project uses a facade for oauth and api's to the most popular social websites (facebook, twitter, google, etc) and within minutes after installing this package to have oauth integrated.
+
 ## Installation
 
 Begin by installing this package through Composer. Edit your project's `composer.json` file to require `codesleeve/social`.
