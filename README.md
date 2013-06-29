@@ -75,6 +75,14 @@ You can pass api requests as a parameter to the `Social::facebook` facade, like 
   $user = Social::facebook('/me');
 ```
 
+You can see if a user is logged into a service like so
+
+```php
+  if (Social::check('facebook')) {
+    ...
+  }
+```
+
 Another thing we've added is a common interface to get the logged in user by passing 'user' as the request.
 
 ```php
@@ -85,6 +93,32 @@ Another thing we've added is a common interface to get the logged in user by pas
 
 This keeps us from having to deal directly with the api when we just simply want a user's info and nothing more.
   
+## Full example page
+
+```html
+  <!doctype html>
+  <html lang="en" class="login page">
+  <head>
+    <meta charset="8-UTF">
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="login-social">
+        <a href="<?= Social::login('facebook') ?>"><img src="http://ottopilotmedia.com/wp-content/uploads/2012/07/facebook-icon.jpg"></a>
+      </div>
+    </div>
+
+    <pre>
+      <?php if (Social::check('facebook')): ?>
+        <?= print_r( Social::facebook('/120500222/feed') )?>
+      <?php endif; ?>
+    </pre>
+
+  </body>
+  </html>
+```
+
 ## Support
 
 Here is a list of social sites we support currently. More will be added later... I think... maybe... yeah, well... I donno... yeah, I think so.
