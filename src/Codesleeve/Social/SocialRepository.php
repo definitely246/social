@@ -17,6 +17,7 @@ class SocialRepository extends ServiceFactory {
 	{
 		$this->config = $config;
 		$this->url = $url;
+		$this->returns_associative_array = false;
 	}
 
 	/**
@@ -62,7 +63,7 @@ class SocialRepository extends ServiceFactory {
 			$request = '/me';
 		}
 
-		return json_decode($service->request( $request ), true);
+		return json_decode($service->request( $request ), $this->returns_associative_array);
 	}
 
 	/**
@@ -82,7 +83,7 @@ class SocialRepository extends ServiceFactory {
 			$request = 'account/verify_credentials.json';
 		}
 
-		return json_decode($service->request($request));
+		return json_decode($service->request($request), $this->returns_associative_array);
 	}
 
 	/**
@@ -102,7 +103,7 @@ class SocialRepository extends ServiceFactory {
 			$request = 'https://www.googleapis.com/oauth2/v1/userinfo';
 		}
 
-		return json_decode($service->request($request), true);
+		return json_decode($service->request($request), $this->returns_associative_array);
 	}
 
 	/**
