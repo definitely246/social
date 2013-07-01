@@ -92,7 +92,23 @@ Another thing we've added is a common interface to get the logged in user by pas
 ```
 
 This keeps us from having to deal directly with the api when we just simply want a user's info and nothing more.
-  
+
+### Decoding json from apis
+
+If you decide you want to decode your data differently from a provider you can set the decoder function. The example below shows how to decode into an associative array. 
+
+```php
+        Social::setDecoder(function($data) {
+            return json_decode($data, true);
+        });
+```
+
+*_Note though_* that this changes the decoder for all of the apis using Social, if you need to reset the decoder back you can do,
+
+```php
+        Social::setDecoder(null);
+```
+
 ## Full example page
 
 ```html
