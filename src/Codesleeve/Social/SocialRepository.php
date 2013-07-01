@@ -17,7 +17,7 @@ class SocialRepository extends ServiceFactory {
 	{
 		$this->config = $config;
 		$this->url = $url;
-		$this->returns_associative_array = false;
+		$this->setDecoder();
 	}
 
 	/**
@@ -63,7 +63,7 @@ class SocialRepository extends ServiceFactory {
 			$request = '/me';
 		}
 
-		return json_decode($service->request( $request ), $this->returns_associative_array);
+		return $this->getDecoder($service->request($request));
 	}
 
 	/**
@@ -83,7 +83,7 @@ class SocialRepository extends ServiceFactory {
 			$request = 'account/verify_credentials.json';
 		}
 
-		return json_decode($service->request($request), $this->returns_associative_array);
+		return $this->getDecoder($service->request($request));
 	}
 
 	/**
@@ -103,7 +103,33 @@ class SocialRepository extends ServiceFactory {
 			$request = 'https://www.googleapis.com/oauth2/v1/userinfo';
 		}
 
-		return json_decode($service->request($request), $this->returns_associative_array);
+		return $this->getDecoder($service->request($request));
+	}
+
+	/**
+	 * [getDecoder description]
+	 * @param  [type] $data [description]
+	 * @return [type]       [description]
+	 */
+	public function getDecoder($data)
+	{
+		$json_closure = $this->json_closure;
+		return $json_closure($data);
+	}
+
+	/**
+	 * [setDecoder description]
+	 * @param [type] $json_closure [description]
+	 */
+	public function setDecoder($json_closure = null)
+	{
+		if ($json_closure === null) {
+			$json_closure = function($data) {
+				return json_decode($data);
+			};
+		}
+
+		$this->json_closure = $json_closure;
 	}
 
 	/**
