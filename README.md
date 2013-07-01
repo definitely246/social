@@ -106,7 +106,7 @@ If you decide you want to decode your data differently from a provider you can s
 *_Note though_* that this changes the decoder for all of the apis using Social, if you need to reset the decoder back you can do,
 
 ```php
-        Social::setDecoder(null));
+        Social::setDecoder(null);
 ```
 
 ## Full example page
