@@ -1,6 +1,6 @@
 {
     "name": "codesleeve/social",
-    "description": "A simple way to integrate social sites like facebook, twitter and google into your Laravel 4 application.",
+    "description": "A simple way to integrate oauth and social sites like facebook, twitter and google into your Laravel 4 application.",
     "authors": [
         {
             "name": "Kelt",
