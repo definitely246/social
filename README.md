@@ -142,6 +142,7 @@ Here is a list of social sites we support currently. More will be added later...
   - Facebook
   - Twitter
   - Google
+  - GitHub
 
 Please file an issue if you see a problem. And enjoy!
 
