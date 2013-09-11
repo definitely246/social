@@ -55,5 +55,20 @@ class SocialController extends Controller {
 
 		return Redirect::to(Config::get('social::google.redirect_url'));
 	}
+	
+	/**
+	 * [githubConnect description]
+	 * @return \Illuminate\Support\Facades\Response
+	 */
+	public function githubConnect()
+	{
+		$service = App::make('social')->google();
+
+		if (Input::get('code', null)) {
+			$service->requestAccessToken( Input::get('code') );
+		}
+
+		return Redirect::to(Config::get('social::github.redirect_url'));
+	}
 
 }
