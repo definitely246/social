@@ -59,5 +59,20 @@ return array(
 		'scopes' => array(),
 		'redirect_url' => '/',
 	),
+	
+	/*
+	|--------------------------------------------------------------------------
+	| github array
+	|--------------------------------------------------------------------------
+	|
+	| Login and request things from github
+	|
+	*/
+	'github' => array(
+		'key' => '',
+		'secret' => '',
+		'scopes' => array(),
+		'redirect_url' => '/',
+	),
 
 );
