@@ -62,7 +62,7 @@ class SocialController extends Controller {
 	 */
 	public function githubConnect()
 	{
-		$service = App::make('social')->google();
+		$service = App::make('social')->github();
 
 		if (Input::get('code', null)) {
 			$service->requestAccessToken( Input::get('code') );
