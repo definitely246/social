@@ -105,6 +105,26 @@ class SocialRepository extends ServiceFactory {
 
 		return $this->getDecoder($service->request($request));
 	}
+	
+	/**
+	 * [github description]
+	 * @param  string $request [description]
+	 * @return [type]          [description]
+	 */
+	public function github($request = '')
+	{
+		$service = $this->getService('github', $this->requestUrl('github'));
+
+		if ($request == '') {
+			return $service;
+		}
+
+		if ($request == 'user') {
+			$request = 'https://api.github.com/user';
+		}
+
+		return $this->getDecoder($service->request($request));
+	}
 
 	/**
 	 * [getDecoder description]
