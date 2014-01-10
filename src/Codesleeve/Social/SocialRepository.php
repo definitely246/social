@@ -33,7 +33,7 @@ class SocialRepository extends ServiceFactory {
 
 		switch ($serviceName)
 		{
-			case: 'twitter':
+			case 'twitter':
 				$token = $service->requestRequestToken();
 				$url = $service->getAuthorizationUri(array('oauth_token' => $token->getRequestToken()));
 			break;
