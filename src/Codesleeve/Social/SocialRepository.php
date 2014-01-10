@@ -21,14 +21,27 @@ class SocialRepository extends ServiceFactory {
 	}
 
 	/**
-	 * [login description]
+	 * This gives us a login url for the serviceName we provide
+	 * 
 	 * @param  [type] $serviceName [description]
 	 * @return [type]              [description]
 	 */
 	public function login($serviceName)
 	{
 		$serviceName = strtolower($serviceName);
-		return $this->getService($serviceName, $this->requestUrl($serviceName))->getAuthorizationUri();
+		$service = $this->getService($serviceName, $this->requestUrl($serviceName));
+
+		switch ($serviceName)
+		{
+			case: 'twitter':
+				$token = $service->requestRequestToken();
+				$url = $service->getAuthorizationUri(array('oauth_token' => $token->getRequestToken()));
+			break;
+
+			default: $url = $service->getAuthorizationUri();
+		}
+
+		return $url;
 	}
 
 	/**
