@@ -1,10 +1,20 @@
 {
     "name": "codesleeve/social",
     "description": "A simple way to integrate oauth and social sites like facebook, twitter and google into your Laravel 4 application.",
+    "keywords": ["laravel", "facebook", "twitter", "social", "oauth"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Kelt",
-            "email": "kelt@dockins.org"
+            "email": "kelt@dockins.org",
+            "homepage": "http://www.keltdockins.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Travis Bennett",
+            "email": "tandrewbennett@hotmail.com",
+            "homepage": "http://travisbennett.net",
+            "role": "Developer"
         }
     ],
     "require": {
