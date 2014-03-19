@@ -35,7 +35,7 @@ class SocialController extends Controller {
 		$service = App::make('social')->twitter();
 
 		if (Input::get('oauth_token', null)) {
-			$service->requestAccessToken( Input::get('oauth_token') );
+			$service->requestAccessToken( Input::get('oauth_token'), Input::get('oauth_verifier') );
 		}
 
 		return Redirect::to(Config::get('social::twitter.redirect_url'));
