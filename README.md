@@ -1,6 +1,16 @@
 ## What the heck is this Social package?
 
-*_A video is coming soon._*
+
+## We've stopped working on this thing. 
+
+Unforunately the underlying package `lusitanian/oauth` has a few issues. We've upgraded to the latest version but there may be issues. :( We don't have time to really put in the work to make this package **production** worthy, so please use at your own risk.
+
+If you'd like to contribute, please put in a pull request.
+
+You can add new providers in pull requests if you'd like. Just browse around the code some.
+
+
+## Goal
 
 This package's goal is to quickly integrate oauth and social media sites like facebook, twitter and google into your laravel 4 application.
 
@@ -136,8 +146,6 @@ If you decide you want to decode your data differently from a provider you can s
 ```
 
 ## Support
-
-Here is a list of social sites we support currently. More will be added later... I think... maybe... yeah, well... I donno... yeah, I think so.
 
   - Facebook
   - Twitter
